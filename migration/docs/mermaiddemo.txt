@@ -1,0 +1,8 @@
+flowchart TD
+    A[Start] --> B{Is User Logged In?}
+    B -->|Yes| C[Go to Dashboard]
+    B -->|No| D[Login]
+    D --> C
+    C --> E[View Products]
+    E --> F[Checkout]
+    F --> G[End]
