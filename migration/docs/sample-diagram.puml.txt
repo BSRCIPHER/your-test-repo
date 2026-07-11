@@ -1,10 +1,16 @@
 @startuml
-[*] --> Idle
 
-Idle --> Loading : Click Button
-Loading --> Success : Loaded
-Loading --> Error : Failed
+package "Frontend" {
+  [React App]
+}
 
-Error --> Idle : Retry
-Success --> [*]
+package "Backend" {
+  [REST API]
+}
+
+database "MySQL"
+
+[React App] --> [REST API]
+[REST API] --> MySQL
+
 @enduml
