@@ -1,20 +1,17 @@
 @startuml
-left to right direction
+start
 
-actor Customer
-actor Admin
+:Open Application;
 
-rectangle "Shopping System" {
-  usecase "Login" as UC1
-  usecase "Browse Products" as UC2
-  usecase "Place Order" as UC3
-  usecase "Manage Users" as UC4
-}
+if (Logged In?) then (Yes)
+  :Open Dashboard;
+else (No)
+  :Show Login Screen;
+  :Enter Credentials;
+  :Authenticate;
+endif
 
-Customer --> UC1
-Customer --> UC2
-Customer --> UC3
+:Display Home Page;
 
-Admin --> UC1
-Admin --> UC4
+stop
 @enduml
