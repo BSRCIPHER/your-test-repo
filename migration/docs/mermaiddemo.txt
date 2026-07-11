@@ -1,7 +1,17 @@
-stateDiagram-v2
-    [*] --> Idle
-    Idle --> Loading : Click Button
-    Loading --> Success : Data Loaded
-    Loading --> Error : Failed
-    Error --> Idle : Retry
-    Success --> [*]
+gantt
+    title Project Timeline
+    dateFormat YYYY-MM-DD
+
+    section Planning
+    Requirement Analysis :done, a1, 2026-07-01,2026-07-03
+    Design              :done, a2, after a1, 3d
+
+    section Development
+    Backend             :active, a3, after a2, 5d
+    Frontend            :a4, after a2, 5d
+
+    section Testing
+    QA Testing          :a5, after a3, 4d
+
+    section Deployment
+    Production          :a6, after a5, 2d
