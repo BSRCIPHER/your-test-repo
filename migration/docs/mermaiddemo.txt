@@ -1,12 +1,17 @@
-sequenceDiagram
-    participant User
-    participant Browser
-    participant Server
-    participant Database
+classDiagram
+    class Animal {
+        +String name
+        +eat()
+        +sleep()
+    }
 
-    User->>Browser: Open Website
-    Browser->>Server: GET /
-    Server->>Database: Fetch Data
-    Database-->>Server: Return Data
-    Server-->>Browser: HTML Response
-    Browser-->>User: Display Page
+    class Dog {
+        +bark()
+    }
+
+    class Cat {
+        +meow()
+    }
+
+    Animal <|-- Dog
+    Animal <|-- Cat
