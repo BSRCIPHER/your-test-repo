@@ -1,17 +1,10 @@
 @startuml
-start
+[*] --> Idle
 
-:Open Application;
+Idle --> Loading : Click Button
+Loading --> Success : Loaded
+Loading --> Error : Failed
 
-if (Logged In?) then (Yes)
-  :Open Dashboard;
-else (No)
-  :Show Login Screen;
-  :Enter Credentials;
-  :Authenticate;
-endif
-
-:Display Home Page;
-
-stop
+Error --> Idle : Retry
+Success --> [*]
 @enduml
