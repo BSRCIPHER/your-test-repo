@@ -1,17 +1,7 @@
-classDiagram
-    class Animal {
-        +String name
-        +eat()
-        +sleep()
-    }
-
-    class Dog {
-        +bark()
-    }
-
-    class Cat {
-        +meow()
-    }
-
-    Animal <|-- Dog
-    Animal <|-- Cat
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Loading : Click Button
+    Loading --> Success : Data Loaded
+    Loading --> Error : Failed
+    Error --> Idle : Retry
+    Success --> [*]
