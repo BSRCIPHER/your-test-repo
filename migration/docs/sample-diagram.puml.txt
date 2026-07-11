@@ -1,18 +1,20 @@
 @startuml
-class Animal {
-  +name : String
-  +eat()
-  +sleep()
+left to right direction
+
+actor Customer
+actor Admin
+
+rectangle "Shopping System" {
+  usecase "Login" as UC1
+  usecase "Browse Products" as UC2
+  usecase "Place Order" as UC3
+  usecase "Manage Users" as UC4
 }
 
-class Dog {
-  +bark()
-}
+Customer --> UC1
+Customer --> UC2
+Customer --> UC3
 
-class Cat {
-  +meow()
-}
-
-Animal <|-- Dog
-Animal <|-- Cat
+Admin --> UC1
+Admin --> UC4
 @enduml
