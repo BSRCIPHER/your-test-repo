@@ -1,8 +1,12 @@
-flowchart TD
-    A[Start] --> B{Is User Logged In?}
-    B -->|Yes| C[Go to Dashboard]
-    B -->|No| D[Login]
-    D --> C
-    C --> E[View Products]
-    E --> F[Checkout]
-    F --> G[End]
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+    participant Database
+
+    User->>Browser: Open Website
+    Browser->>Server: GET /
+    Server->>Database: Fetch Data
+    Database-->>Server: Return Data
+    Server-->>Browser: HTML Response
+    Browser-->>User: Display Page
