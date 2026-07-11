@@ -1,13 +1,18 @@
 @startuml
-actor User
-participant Browser
-participant Server
-database Database
+class Animal {
+  +name : String
+  +eat()
+  +sleep()
+}
 
-User -> Browser: Open Website
-Browser -> Server: GET /
-Server -> Database: Fetch User Data
-Database --> Server: Return Data
-Server --> Browser: HTML Response
-Browser --> User: Display Dashboard
+class Dog {
+  +bark()
+}
+
+class Cat {
+  +meow()
+}
+
+Animal <|-- Dog
+Animal <|-- Cat
 @enduml
