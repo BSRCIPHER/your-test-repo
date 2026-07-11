@@ -1,14 +1,18 @@
 @startuml
+class Animal {
+  +name : String
+  +eat()
+  +sleep()
+}
 
-title User Login Flow
+class Dog {
+  +bark()
+}
 
-actor User
-participant "Web App" as App
-database DB
+class Cat {
+  +meow()
+}
 
-User -> App: Enter username & password
-App -> DB: Validate credentials
-DB --> App: Valid
-App --> User: Login Successful
-
+Animal <|-- Dog
+Animal <|-- Cat
 @enduml
