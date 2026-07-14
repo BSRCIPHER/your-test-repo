@@ -1,16 +1,16 @@
 @startuml
 
-package "Frontend" {
-  [React App]
-}
+start
 
-package "Backend" {
-  [REST API]
-}
+:Enter Username;
+:Enter Password;
 
-database "MySQL"
+if (Login Successful?) then (Yes)
+  :Open Dashboard;
+else (No)
+  :Show Error Message;
+endif
 
-[React App] --> [REST API]
-[REST API] --> MySQllll
+stop
 
 @enduml
