@@ -11,6 +11,6 @@ package "Backend" {
 database "MySQL"
 
 [React App] --> [REST API]
-[REST API] --> MySQL
+[REST API] --> MySQllll
 
 @enduml
