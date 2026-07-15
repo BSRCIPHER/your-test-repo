@@ -1,28 +1,40 @@
-flowchart TD
+classDiagram
 
-    A[Developer Writes Code] --> B[Git Commit]
-    B --> C[Push to Repository]
-    C --> D[CI Pipeline]
+class User {
+    +String name
+    +String email
+    +login()
+    +logout()
+}
 
-    D --> E{Build Successful?}
+class Member {
+    +int memberId
+    +borrowBook()
+    +returnBook()
+}
 
-    E -->|Yes| F[Run Unit Tests]
-    E -->|No| G[Fix Build Errors]
+class Librarian {
+    +addBook()
+    +removeBook()
+    +issueBook()
+}
 
-    F --> H{Tests Passed?}
+class Book {
+    +String title
+    +String author
+    +String isbn
+    +Boolean available
+}
 
-    H -->|Yes| I[Deploy to Staging]
-    H -->|No| J[Fix Test Failures]
+class Loan {
+    +Date issueDate
+    +Date dueDate
+    +closeLoan()
+}
 
-    I --> K[QA Testing]
+User <|-- Member
+User <|-- Librarian
 
-    K --> L{QA Approved?}
-
-    L -->|Yes| M[Deploy to Production]
-    L -->|No| N[Fix Issues]
-
-    G --> B
-    J --> B
-    N --> B
-
-    M --> O[Application Live]
+Member "1" --> "*" Loan : borrows
+Loan "*" --> "1" Book : contains
+Librarian --> Book : manages
