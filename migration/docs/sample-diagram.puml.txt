@@ -1,16 +1,18 @@
 @startuml
+title User Login Flow
 
-start
+actor User
+participant "Web Application" as App
+database Database
 
-:Enter Username;
-:Enter Password;
+User -> App: Enter username & password
+App -> Database: Validate credentials
+Database --> App: Valid / Invalid
 
-if (Login Successful?) then (Yes)
-  :Open Dashboard;
-else (No)
-  :Show Error Message;
-endif
-
-stop
+alt Login Successful
+    App --> User: Login Success
+else Login Failed
+    App --> User: Invalid username or password
+end
 
 @enduml
