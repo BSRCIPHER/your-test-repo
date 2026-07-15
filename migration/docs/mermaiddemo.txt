@@ -1,40 +1,8 @@
-classDiagram
-
-class User {
-    +String name
-    +String email
-    +login()
-    +logout()
-}
-
-class Member {
-    +int memberId
-    +borrowBook()
-    +returnBook()
-}
-
-class Librarian {
-    +addBook()
-    +removeBook()
-    +issueBook()
-}
-
-class Book {
-    +String title
-    +String author
-    +String isbn
-    +Boolean available
-}
-
-class Loan {
-    +Date issueDate
-    +Date dueDate
-    +closeLoan()
-}
-
-User <|-- Member
-User <|-- Librarian
-
-Member "1" --> "*" Loan : borrows
-Loan "*" --> "1" Book : contains
-Librarian --> Book : manages
+flowchart TD
+    A([Start]) --> B[Login]
+    B --> C{Valid User?}
+    C -->|Yes| D[Open Dashboard]
+    C -->|No| E[Show Error]
+    E --> B
+    D --> F[View Reports]
+    F --> G([End])
