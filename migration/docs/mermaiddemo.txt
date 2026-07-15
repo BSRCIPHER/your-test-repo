@@ -1,8 +1,9 @@
-flowchart TD
-    A([Start]) --> B[Login]
-    B --> C{Valid User?}
-    C -->|Yes| D[Open Dashboard]
-    C -->|No| E[Show Error]
-    E --> B
-    D --> F[View Reports]
-    F --> G([End])
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    User->>Browser: Open Application
+    Browser->>Server: Request Dashboard
+    Server-->>Browser: Return HTML
+    Browser-->>User: Display Dashboard
