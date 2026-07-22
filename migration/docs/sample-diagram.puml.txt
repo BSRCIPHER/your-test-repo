@@ -1,8 +1,9 @@
 @startuml
-title User Login Flow
+
+title User Login Sequence
 
 actor User
-participant "Web Application" as App
+participant "Web App" as App
 database Database
 
 User -> App: Enter username & password
@@ -10,9 +11,9 @@ App -> Database: Validate credentials
 Database --> App: Valid / Invalid
 
 alt Login Successful
-    App --> User: Login Success
+    App --> User: Display Dashboard
 else Login Failed
-    App --> User: Invalid username or password
+    App --> User: Show Error Message
 end
 
 @enduml
