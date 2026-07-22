@@ -1,19 +1,16 @@
 @startuml
 
-title User Login Sequence
+start
 
-actor User
-participant "Web App" as App
-database Database
+:Open Application;
+:Enter Username & Password;
 
-User -> App: Enter username & password
-App -> Database: Validate credentials
-Database --> App: Valid / Invalid
+if (Credentials Valid?) then (Yes)
+    :Navigate to Dashboard;
+else (No)
+    :Show Error Message;
+endif
 
-alt Login Successful
-    App --> User: Display Dashboard
-else Login Failed
-    App --> User: Show Error Message
-end
+stop
 
 @enduml
