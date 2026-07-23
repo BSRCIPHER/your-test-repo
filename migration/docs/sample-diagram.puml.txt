@@ -1,15 +1,30 @@
 @startuml
+title User Login Flow
 
-actor User
-participant Browser
-participant Server
-database Database
+start
 
-User -> Browser: Login
-Browser -> Server: POST /login
-Server -> Database: Validate User
-Database --> Server: Success
-Server --> Browser: JWT Token
-Browser --> User: Dashboard
+:Open Login Page;
 
+if (Username & Password Entered?) then (Yes)
+    :Validate Credentials;
+
+    if (Credentials Valid?) then (Yes)
+        :Create User Session;
+        :Redirect to Dashboard;
+
+        repeat
+            :User Performs Actions;
+        repeat while (Continue using application?) is (Yes)
+
+        :Logout;
+    else (No)
+        :Display "Invalid Username or Password";
+        :Return to Login Page;
+    endif
+
+else (No)
+    :Ask User to Enter Credentials;
+endif
+
+stop
 @enduml
