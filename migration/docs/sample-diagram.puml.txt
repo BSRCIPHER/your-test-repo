@@ -1,16 +1,15 @@
 @startuml
 
-start
+actor User
+participant Browser
+participant Server
+database Database
 
-:Open Application;
-:Enter Username & Password;
-
-if (Credentials Valid?) then (Yes)
-    :Navigate to Dashboard;
-else (No)
-    :Show Error Message;
-endif
-
-stop
+User -> Browser: Login
+Browser -> Server: POST /login
+Server -> Database: Validate User
+Database --> Server: Success
+Server --> Browser: JWT Token
+Browser --> User: Dashboard
 
 @enduml
